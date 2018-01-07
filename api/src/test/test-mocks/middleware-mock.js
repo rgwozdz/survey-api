@@ -3,6 +3,9 @@
 class MiddlewareMock {
   constructor() {
     const _settings = {};
+
+    this.redirectedPath = null;
+
     this.req = {
 
       body: Object.create(null),
@@ -18,7 +21,11 @@ class MiddlewareMock {
         }
       },
     };
-    this.res = {};
+    this.res = {
+      redirect : (path)=>{
+        this.redirectedPath = path;
+      }
+    };
     this.testError = null;
     this.next = (err)=>{ return this.testError = err || null };
   }

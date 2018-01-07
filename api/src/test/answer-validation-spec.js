@@ -22,7 +22,6 @@ describe('AnswerValidation tests', function() {
           return getQuestions(db);
         })
         .then(result=>{
-          console.log(result);
           questions = result;
           done();
         })

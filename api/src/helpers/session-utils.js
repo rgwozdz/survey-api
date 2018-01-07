@@ -31,8 +31,6 @@ function sessionQuestions(req, res, next) {
       return next();
     })
     .catch(next);
-
-
 }
 
 module.exports = {sessionQuestionIndex, sessionQuestions};

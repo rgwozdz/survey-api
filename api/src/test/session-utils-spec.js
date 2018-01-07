@@ -12,18 +12,6 @@ describe('SessionUtils tests', function() {
 
   });
 
-  // describe('Test _querySuperAdmin', function() {
-  //
-  //   it('Should add a specified properties to req.user ', function() {
-  //     const mock = new MiddlewareUserMock(testData.nonsuperuser);
-  //     return authorization._queryUserPermissions(mock.req, db, mock.next)
-  //       .then(result=>{
-  //         expect(mock.req.user).to.have.property('super_admin').to.equal(false);
-  //         expect(mock.req.user).to.have.property('acl_groups').that.is.an('array');
-  //       });
-  //   });
-  // });
-
   describe('Test sessionQuestionIndex', function() {
 
     it('Sessions not yet assigned a questionIndex should get one equal to -1', function() {
