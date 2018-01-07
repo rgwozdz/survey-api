@@ -42,7 +42,9 @@ const appPromise = ()=>{
 
         // Add "/api" prefix to all routes
         app.use('/api', router);
-//        require('./routes/v1-routes')(app);
+        app.use('/api/v1', require('./routes/start'));
+        app.use('/api/v1', require('./routes/next'));
+        app.use('/api/v1', require('./routes/summary'));
 
         app.get('/api/v1/test', (req, res, next)=>{
           res.status(200).json({"message":"Hello"});
