@@ -6,7 +6,15 @@ const sessionUtils = require('../helpers/session-utils');
 /**
  *  /start
  */
-router.get('/start', [sessionUtils.sessionQuestionIndex, sessionUtils.sessionQuestions], function (req, res, next) {
+router.get('/start',
+  [
+    sessionUtils.sessionQuestionIndex,
+    (req, res, next)=>{
+      sessionUtils.sessionQuestions(req)
+      .then(() => next())
+      .catch(next)
+    }
+  ], function (req, res, next) {
 
   if(req.session.questionIndex > -1) {
     return res.redirect('/api/v1/next');

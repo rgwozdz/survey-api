@@ -19,18 +19,15 @@ function sessionQuestionIndex(req, res, next){
 }
 
 
-function sessionQuestions(req, res, next) {
-
-  if(typeof req.session.questions === 'object') {
-    return next();
-  }
-
-  getQuestions(req.app.get('db'))
-    .then(questions=>{
-      req.session.questions = questions;
-      return next();
-    })
-    .catch(next);
+function sessionQuestions(req) {
+  return new Promise((resolve, reject)=>{
+    getQuestions(req.app.get('db'))
+      .then(questions=>{
+        req.session.questions = questions;
+        resolve();
+      })
+      .catch(reject);
+  });
 }
 
 module.exports = {sessionQuestionIndex, sessionQuestions};
