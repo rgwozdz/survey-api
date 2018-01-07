@@ -1,0 +1,34 @@
+{
+  "name": "survey-api",
+  "version": "0.0.1",
+  "description": "Survey API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rgwozdz/survey-api"
+  },
+  "author": "Rich Gwozdz",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rgwozdz/survey-apiissues"
+  },
+  "homepage": "https://github.com/rgwozdz/survey-api#readme",
+  "dependencies": {
+    "body-parser": "1.18.2",
+    "compression": "1.7.1",
+    "cors": "2.8.4",
+    "express": "4.16.1",
+    "mongoose": "^4.12.4",
+    "mongoose-beautiful-unique-validation": "^7.0.0",
+    "rollbar": "^2.2.10"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "mochawesome": "^2.3.1",
+    "request-promise": "^4.2.2"
+  }
+}
