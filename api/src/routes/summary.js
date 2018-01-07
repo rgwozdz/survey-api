@@ -7,7 +7,11 @@ const router = express.Router();
  */
 router.get('/summary', function (req, res, next) {
 
-  res.status(200).json({message: "tmp-stub"});
+  let summary = req.session.questions.map(item=>{
+    return {question: item.label, response: item.response || `Not yet answered`};
+  });
+
+  res.status(200).json(summary);
 
 });
 

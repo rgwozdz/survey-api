@@ -1,10 +1,13 @@
 "use strict";
 const express = require('express');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 const db = require('./db-binding');
+const sessionRouter = require('./helpers/session-utils')
 
 const appPromise = ()=>{
 
@@ -39,6 +42,15 @@ const appPromise = ()=>{
         // Set static public directory
         app.use('/public', express.static(path.join(__dirname, 'public')));
 
+        // Set up session middleware
+        app.use(session({
+          secret: process.env.SESSION_SECRET,
+          store: new MongoStore({
+            name: 'survey-api-session-cookie-id',
+            url: 'mongodb://mongo-store/session_store',
+            ttl: 14 * 24 * 60 * 60 // = 14 days
+          })
+        }));
 
         // Add "/api" prefix to all routes
         app.use('/api', router);
@@ -46,15 +58,15 @@ const appPromise = ()=>{
         app.use('/api/v1', require('./routes/next'));
         app.use('/api/v1', require('./routes/summary'));
 
-        app.get('/api/v1/test', (req, res, next)=>{
-          res.status(200).json({"message":"Hello"});
-        });
-
         // Service Error Handler;
         app.use(function (err, req, res, next) {
 
           let status = err.status || 500;
           let message = err.message;
+
+          if(err.status === 500) {
+            console.log(err);
+          }
 
           if(app.get('env') === 'production') {
             err = {};

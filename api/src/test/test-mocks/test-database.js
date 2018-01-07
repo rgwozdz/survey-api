@@ -3,9 +3,10 @@ const questionSchema = require('../../models/questionSchema');
 
 const questions = [
   {
-  index: 1,
-  label: "Coffee or tea?",
-  answers: ["coffee", "tea"]
+    index: 1,
+    label: "Coffee or tea?",
+    answers: ["coffee", "tea"],
+
   },
   {
     index: 2,
