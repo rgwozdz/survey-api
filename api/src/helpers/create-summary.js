@@ -11,7 +11,6 @@ function createSummary(req) {
       }));
     }
 
-    console.log(req.app.get('db'))
     getQuestions(req.app.get('db'))
       .then((questions)=>{
         resolve(questions.map(item=>{
