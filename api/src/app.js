@@ -45,6 +45,8 @@ const appPromise = ()=>{
         // Set up session middleware
         app.use(session({
           secret: process.env.SESSION_SECRET,
+          resave: true,
+          saveUninitialized: true,
           store: new MongoStore({
             name: 'survey-api-session-cookie-id',
             url: 'mongodb://mongo-store/session_store',

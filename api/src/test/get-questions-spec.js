@@ -6,7 +6,7 @@ const MiddlewareMock = require('./test-mocks/middleware-mock').MiddlewareMock;
 const createDatabase = require('./test-mocks/test-database');
 const getQuestions = require('../helpers/get-questions');
 
-describe('AnswerValidation tests', function() {
+describe('GetQuestions tests', function() {
 
   let db;
   before(function (done) {

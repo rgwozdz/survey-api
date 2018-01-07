@@ -1,19 +1,18 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
+const createSummary = require('../helpers/create-summary');
 
 /**
  *  /summary
  */
 router.get('/summary', function (req, res, next) {
 
-  let summary = req.session.questions.map(item=>{
-    return {question: item.label, response: item.response || `Not yet answered`};
-  });
-
-  res.status(200).json(summary);
-
+  createSummary(req)
+    .then(summary=>{
+      res.status(200).json(summary);
+    })
+    .catch(next);
 });
-
 
 module.exports = router;

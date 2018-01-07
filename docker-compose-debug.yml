@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  mongodb:
+    build: ./mongodb
+    image: mongo-store:1.0
+    container_name: mongo-store
+    ports:
+      - "27017:27017"
+  api:
+    build: ./api
+    image: api:0.1
+    container_name: survey_api
+    ports:
+      - "8000:8000"
+      - "5858:5858"
+    links:
+      - mongodb
+    volumes:
+      - ./api/src:/usr/src/
+    environment:
+      - NODE_ENV=local
+      - SESSION_SECRET=s|_|p3rS3cr3t
+      - API_PORT=8000
+    command: bash -c "npm install -g mocha && npm install -g nodemon && node seed-db.js && nodemon --inspect=0.0.0.0:5858  server.js"

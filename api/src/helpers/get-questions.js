@@ -17,6 +17,10 @@ function getQuestions(db) {
         if(questions.length === 0) {
           reject(new Error('No questions found in database.'))
         }
+        questions.forEach(item=>{
+          Object.defineProperty(item, "label", { configurable: false, writable: false });
+          Object.defineProperty(item, "answers", { configurable: false, writable: false });
+        })
         return resolve(questions);
 
       });

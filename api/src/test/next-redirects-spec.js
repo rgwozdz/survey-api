@@ -7,7 +7,7 @@ const createDatabase = require('./test-mocks/test-database');
 const getQuestions = require('../helpers/get-questions');
 const nextRedirects = require('../helpers/next-redirects');
 
-describe('SessionUtils tests', function() {
+describe('NextRedirects tests', function() {
 
   let questions;
   let db;

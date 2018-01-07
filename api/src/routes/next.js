@@ -15,9 +15,11 @@ router.get('/next', [sessionQuestion.sessionQuestionIndex, nextRedirects, answer
 
   if(req.session.questionIndex === req.session.questions.length) {
     return res.redirect('/api/v1/summary');
+  } else {
+    return res.status(200).json(req.session.questions[req.session.questionIndex]);
   }
 
-  return res.status(200).json(req.session.questions[req.session.questionIndex]);
+
 
 
 });

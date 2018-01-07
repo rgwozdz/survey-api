@@ -4,7 +4,7 @@
   "description": "Survey API",
   "main": "server.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test  --exit"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   "author": "Rich Gwozdz",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/rgwozdz/survey-apiissues"
+    "url": "https://github.com/rgwozdz/survey-api/issues"
   },
   "homepage": "https://github.com/rgwozdz/survey-api#readme",
   "dependencies": {
@@ -24,13 +24,13 @@
     "express": "4.16.1",
     "express-session": "^1.15.6",
     "mongoose": "^4.12.4",
-    "mongoose-beautiful-unique-validation": "^7.0.0",
-    "rollbar": "^2.2.10"
+    "mongoose-beautiful-unique-validation": "^7.0.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^4.0.1",
     "mochawesome": "^2.3.1",
-    "request-promise": "^4.2.2"
+    "request": "^2.83.0",
+    "supertest": "^3.0.0"
   }
 }

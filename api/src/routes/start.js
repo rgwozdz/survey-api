@@ -16,10 +16,6 @@ router.get('/start',
     }
   ], function (req, res, next) {
 
-  if(req.session.questionIndex > -1) {
-    return res.redirect('/api/v1/next');
-  }
-
   req.session.questionIndex = 0;
   return res.status(200).json(req.session.questions[0]);
 
