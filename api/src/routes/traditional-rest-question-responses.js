@@ -1,23 +1,37 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const sessionUtils = require('../helpers/session-utils');
+
 
 /**
- *  /start
+ *  /questions/:id/response - POST a new response to a question
  */
-router.get('/start',
-  [
-    sessionUtils.sessionQuestionIndex,
-    (req, res, next)=>{
-      sessionUtils.sessionQuestions(req)
-      .then(() => next())
-      .catch(next)
-    }
-  ], function (req, res, next) {
+router.get('/questions/:id/response', function (req, res, next) {
 
-  req.session.questionIndex = 0;
-  return res.status(200).json(req.session.questions[0]);
+  /**
+   * Here we would:
+   * 1) ensure question id is valid and if not send 400 response
+   * 2) validate submitted answer
+   * 3) add answer to session summary
+  */
+
+  return res.status(201).send();
+
+});
+
+
+/**
+ *  /questions/:id/response - GET the response to a previously answered question
+ */
+router.get('/questions/:id/response', function (req, res, next) {
+
+  /**
+   * Here we would:
+   * 1) ensure question id is valid and if not send 404 response
+   * 2) retrieve response details from session summary for question with submitted id
+   */
+
+  return res.status(200).json(/* response details */);
 
 });
 

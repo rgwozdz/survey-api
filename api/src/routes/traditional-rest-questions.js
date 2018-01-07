@@ -8,7 +8,8 @@ const sessionUtils = require('../helpers/session-utils');
  */
 router.get('/questions', function (req, res, next) {
 
-  return res.status(200).json({});
+  // Here we would fetch all questions or an empty array if none exist
+  return res.status(200).json(/* questions*/);
 
 });
 
@@ -17,6 +18,7 @@ router.get('/questions', function (req, res, next) {
  */
 router.get('/questions/:id', function (req, res, next) {
 
+  /* Here we would fetch one question for submitted id. If it doesn't exist, return 404*/
   return res.status(200).json({});
 
 });
