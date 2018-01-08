@@ -2,6 +2,11 @@
 
 let questionSchema = require('../models/questionSchema');
 
+/**
+ *  Helper to fetch survey questions.
+ * @param db
+ * @returns {Promise}
+ */
 function getQuestions(db) {
 
   return new Promise((resolve, reject)=>{
@@ -22,10 +27,8 @@ function getQuestions(db) {
           Object.defineProperty(item, "answers", { configurable: false, writable: false });
         })
         return resolve(questions);
-
       });
   });
 };
-
 
 module.exports = getQuestions;
