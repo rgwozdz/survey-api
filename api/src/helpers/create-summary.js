@@ -1,6 +1,11 @@
 "use strict";
 const getQuestions = require('./get-questions');
 
+/**
+ * Helper function to create a survey summary;  allows for case that session questions may not yet have been issued
+ * @param req
+ * @returns {Promise}
+ */
 function createSummary(req) {
 
   return new Promise((resolve, reject)=>{
